@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>orrin.com.erp.parent</artifactId>
+        <groupId>orrin.com</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>orrin.com.erp.manager</artifactId>
+    <version>${parent.version}</version>
+
+    <packaging>war</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.bstek.bdf2</groupId>
+            <artifactId>bdf2-job</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.bstek.bdf2</groupId>
+            <artifactId>bdf2-webservice</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.bstek.bdf2</groupId>
+                    <artifactId>bdf2-orm-hibernate3</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.bstek.bdf2</groupId>
+            <artifactId>bdf2-profile</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.bstek.bdf2</groupId>
+            <artifactId>bdf2-job-daemon</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.bstek.bdf2</groupId>
+                    <artifactId>bdf2-job</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.bstek.bdf2</groupId>
+            <artifactId>bdf2-export</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.bstek.bdf2</groupId>
+            <artifactId>bdf2-authoritydelegation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.bstek.bdf2</groupId>
+            <artifactId>bdf2-import</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>4.0.0.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <resources>
+            <resource>
+                <targetPath>${project.build.directory}/classes</targetPath>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
